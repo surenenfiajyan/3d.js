@@ -2,4 +2,4 @@
 ## Description
 A library that displays 3D objects in ASCII characters
 ## License
-[MIT license](https://github.com/surenenfiajyan/2048/blob/main/LICENSE)
+[MIT license](https://github.com/surenenfiajyan/3d.js/blob/main/LICENSE)
