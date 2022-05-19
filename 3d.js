@@ -458,7 +458,7 @@ class ThreeDimensionalObject {
 			outerAngle = nextOuterAngle;
 		} while (outerAngle < Math.PI);
 
-		return sphere.move(centerPoint.x, centerPoint.x, centerPoint.x);
+		return sphere.move(centerPoint.x, centerPoint.y, centerPoint.z);
 	}
 
 	static createCylinder(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
