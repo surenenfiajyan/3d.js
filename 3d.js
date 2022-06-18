@@ -354,6 +354,39 @@ class ThreeDimensionalObject {
 		return this;
 	}
 
+	optimize(mergeRadius = 0.1) {
+		function getKeyFromPoint(point) {
+			return `${Math.round(point.x / mergeRadius)},${Math.round(point.y / mergeRadius)},${Math.round(point.z / mergeRadius)}`;
+		}
+
+		const newPoints = new Map();
+		const newTriangles = new Map();
+
+		for (const triangle of this.#triangles) {
+			const pointAKey = getKeyFromPoint(triangle.pointA);
+			const pointBKey = getKeyFromPoint(triangle.pointB);
+			const pointCKey = getKeyFromPoint(triangle.pointC);
+
+			if (pointAKey !== pointBKey && pointBKey !== pointCKey && pointAKey !== pointCKey) {
+				newTriangles.set(`${pointAKey}|${pointBKey}|${pointCKey}`, triangle);
+			}
+		}
+
+		this.#triangles = [...newTriangles.values()];
+
+		for (const triangle of this.#triangles) {
+			newPoints.set(getKeyFromPoint(triangle.pointA), triangle.pointA);
+			newPoints.set(getKeyFromPoint(triangle.pointB), triangle.pointB);
+			newPoints.set(getKeyFromPoint(triangle.pointC), triangle.pointC);
+		}
+
+		for (const triangle of this.#triangles) {
+			triangle.pointA = newPoints.get(getKeyFromPoint(triangle.pointA)).clone();
+			triangle.pointB = newPoints.get(getKeyFromPoint(triangle.pointB)).clone();
+			triangle.pointC = newPoints.get(getKeyFromPoint(triangle.pointC)).clone();
+		}
+	}
+
 	static createBox(diagonal = new Line(new Point(0, 0, 0), new Point(1, 1, 1))) {
 		return new ThreeDimensionalObject([
 			new Triangle(
