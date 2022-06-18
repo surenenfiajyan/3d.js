@@ -385,6 +385,8 @@ class ThreeDimensionalObject {
 			triangle.pointB = newPoints.get(getKeyFromPoint(triangle.pointB)).clone();
 			triangle.pointC = newPoints.get(getKeyFromPoint(triangle.pointC)).clone();
 		}
+
+		return this;
 	}
 
 	static createBox(diagonal = new Line(new Point(0, 0, 0), new Point(1, 1, 1))) {
