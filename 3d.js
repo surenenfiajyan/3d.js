@@ -9,7 +9,22 @@ class Point {
 		this.z = z;
 	}
 
-	rotate(line, angle) {
+	flipX(centerOffset = 0) {
+		this.x = 2 * centerOffset - this.x;
+		return this;
+	}
+
+	flipY(centerOffset = 0) {
+		this.y = 2 * centerOffset - this.y;
+		return this;
+	}
+
+	flipZ(centerOffset = 0) {
+		this.z = 2 * centerOffset - this.z;
+		return this;
+	}
+
+	rotate(line = new Line(), angle) {
 		const normalizedEndPoint = line.pointB.clone().move(-line.pointA.x, -line.pointA.y, -line.pointA.z);
 		const angleX = (normalizedEndPoint.y !== 0 || normalizedEndPoint.z !== 0) ? Math.atan(normalizedEndPoint.y / normalizedEndPoint.z) : 0;
 
@@ -105,6 +120,27 @@ class Triangle {
 		this.pointC = pointC?.clone() ?? new Point();
 	}
 
+	flipX(centerOffset = 0) {
+		this.pointA.flipX(centerOffset);
+		this.pointB.flipX(centerOffset);
+		this.pointC.flipX(centerOffset);
+		return this;
+	}
+
+	flipY(centerOffset = 0) {
+		this.pointA.flipY(centerOffset);
+		this.pointB.flipY(centerOffset);
+		this.pointC.flipY(centerOffset);
+		return this;
+	}
+
+	flipZ(centerOffset = 0) {
+		this.pointA.flipZ(centerOffset);
+		this.pointB.flipZ(centerOffset);
+		this.pointC.flipZ(centerOffset);
+		return this;
+	}
+
 	rotate(line, angle) {
 		this.pointA.rotate(line, angle);
 		this.pointB.rotate(line, angle);
@@ -180,6 +216,24 @@ class Line {
 	constructor(pointA = null, pointB = null) {
 		this.pointA = pointA?.clone() ?? new Point();
 		this.pointB = pointB?.clone() ?? new Point();
+	}
+
+	flipX(centerOffset = 0) {
+		this.pointA.flipX(centerOffset);
+		this.pointB.flipX(centerOffset);
+		return this;
+	}
+
+	flipY(centerOffset = 0) {
+		this.pointA.flipY(centerOffset);
+		this.pointB.flipY(centerOffset);
+		return this;
+	}
+
+	flipZ(centerOffset = 0) {
+		this.pointA.flipZ(centerOffset);
+		this.pointB.flipZ(centerOffset);
+		return this;
 	}
 
 	rotate(line, angle) {
@@ -307,6 +361,21 @@ class ThreeDimensionalObject {
 
 	clone() {
 		return new ThreeDimensionalObject(this.#triangles);
+	}
+
+	flipX(centerOffset = 0) {
+		this.#triangles.forEach(triangle => triangle.flipX(centerOffset));
+		return this;
+	}
+
+	flipY(centerOffset = 0) {
+		this.#triangles.forEach(triangle => triangle.flipY(centerOffset));
+		return this;
+	}
+
+	flipZ(centerOffset = 0) {
+		this.#triangles.forEach(triangle => triangle.flipZ(centerOffset));
+		return this;
 	}
 
 	rotate(line, angle) {
