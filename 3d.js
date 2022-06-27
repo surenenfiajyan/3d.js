@@ -24,7 +24,7 @@ class Point {
 		return this;
 	}
 
-	rotate(line = new Line(), angle) {
+	rotate(line, angle) {
 		const normalizedEndPoint = line.pointB.clone().move(-line.pointA.x, -line.pointA.y, -line.pointA.z);
 		const angleX = (normalizedEndPoint.y !== 0 || normalizedEndPoint.z !== 0) ? Math.atan(normalizedEndPoint.y / normalizedEndPoint.z) : 0;
 
