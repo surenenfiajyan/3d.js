@@ -323,37 +323,13 @@ class ThreeDimensionalObject {
 		);
 
 		this.#triangles.forEach(triangle => {
-			const minX = Math.min(triangle.pointA.x, triangle.pointB.x, triangle.pointC.x);
-			const minY = Math.min(triangle.pointA.y, triangle.pointB.y, triangle.pointC.y);
-			const minZ = Math.min(triangle.pointA.z, triangle.pointB.z, triangle.pointC.z);
+			line.pointA.x = Math.min(triangle.pointA.x, triangle.pointB.x, triangle.pointC.x, line.pointA.x);
+			line.pointA.y = Math.min(triangle.pointA.y, triangle.pointB.y, triangle.pointC.y, line.pointA.y);
+			line.pointA.z = Math.min(triangle.pointA.z, triangle.pointB.z, triangle.pointC.z, line.pointA.z);
 
-			const maxX = Math.max(triangle.pointA.x, triangle.pointB.x, triangle.pointC.x);
-			const maxY = Math.max(triangle.pointA.y, triangle.pointB.y, triangle.pointC.y);
-			const maxZ = Math.max(triangle.pointA.z, triangle.pointB.z, triangle.pointC.z);
-
-			if (minX < line.pointA.x) {
-				line.pointA.x = minX;
-			}
-
-			if (minY < line.pointA.y) {
-				line.pointA.y = minY;
-			}
-
-			if (minZ < line.pointA.z) {
-				line.pointA.z = minZ;
-			}
-
-			if (maxX > line.pointB.x) {
-				line.pointB.x = maxX;
-			}
-
-			if (maxY > line.pointB.y) {
-				line.pointB.y = maxY;
-			}
-
-			if (maxZ > line.pointB.z) {
-				line.pointB.z = maxZ;
-			}
+			line.pointB.x = Math.max(triangle.pointA.x, triangle.pointB.x, triangle.pointC.x, line.pointB.x);
+			line.pointB.y = Math.max(triangle.pointA.y, triangle.pointB.y, triangle.pointC.y, line.pointB.y);
+			line.pointB.z = Math.max(triangle.pointA.z, triangle.pointB.z, triangle.pointC.z, line.pointB.z);
 		});
 
 		return line.center();
