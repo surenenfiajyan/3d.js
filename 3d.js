@@ -1208,7 +1208,7 @@ class Renderer {
 	}
 
 	/**
-	 * Het height
+	 * Get height
 	 * @returns {number}
 	 */
 	height() {
