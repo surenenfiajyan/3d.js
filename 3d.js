@@ -1,5 +1,5 @@
 /**
- * Three dimensional point
+ * Three-dimensional point
  */
 class Point {
 	/**
@@ -34,7 +34,7 @@ class Point {
 
 	/**
 	 * Flip around YZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Point}
 	 */
 	flipX(centerOffset = 0) {
@@ -44,7 +44,7 @@ class Point {
 
 	/**
 	 * Flip around XZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Point}
 	 */
 	flipY(centerOffset = 0) {
@@ -54,7 +54,7 @@ class Point {
 
 	/**
 	 * Flip around XY plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Point}
 	 */
 	flipZ(centerOffset = 0) {
@@ -64,8 +64,8 @@ class Point {
 
 	/**
 	 * Rotate around the line
-	 * @param {Line} line 
-	 * @param {number} angle 
+	 * @param {Line} line
+	 * @param {number} angle
 	 * @returns {Point}
 	 */
 	rotate(line, angle) {
@@ -99,9 +99,9 @@ class Point {
 
 	/**
 	 * Rotate around X axis
-	 * @param {number} angle 
-	 * @param {number} y 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} y
+	 * @param {number} z
 	 * @returns {Point}
 	 */
 	rotateX(angle, y = 0, z = 0) {
@@ -116,9 +116,9 @@ class Point {
 
 	/**
 	 * Rotate around Y axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} z
 	 * @returns {Point}
 	 */
 	rotateY(angle, x = 0, z = 0) {
@@ -133,9 +133,9 @@ class Point {
 
 	/**
 	 * Rotate around Z axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} y 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} y
 	 * @returns {Point}
 	 */
 	rotateZ(angle, x = 0, y = 0) {
@@ -150,9 +150,9 @@ class Point {
 
 	/**
 	 * Move by X, Y and Z
-	 * @param {number} offsetX 
-	 * @param {number} offsetY 
-	 * @param {number} offsetZ 
+	 * @param {number} offsetX
+	 * @param {number} offsetY
+	 * @param {number} offsetZ
 	 * @returns {Point}
 	 */
 	move(offsetX = 0, offsetY = 0, offsetZ = 0) {
@@ -164,8 +164,8 @@ class Point {
 
 	/**
 	 * Scale uniformly around the point
-	 * @param {number} ratio 
-	 * @param {Point} centerPoint 
+	 * @param {number} ratio
+	 * @param {Point} centerPoint
 	 * @returns {Point}
 	 */
 	scale(ratio, centerPoint = new Point()) {
@@ -177,10 +177,10 @@ class Point {
 
 	/**
 	 * Scale by X, Y and Z dimensions around a point
-	 * @param {number} ratioX 
-	 * @param {number} ratioY 
-	 * @param {number} ratioZ 
-	 * @param {Point} centerPoint 
+	 * @param {number} ratioX
+	 * @param {number} ratioY
+	 * @param {number} ratioZ
+	 * @param {Point} centerPoint
 	 * @returns {Point}
 	 */
 	scaleXYZ(ratioX = 1, ratioY = 1, ratioZ = 1, centerPoint = new Point()) {
@@ -200,7 +200,7 @@ class Point {
 }
 
 /**
- * Three dimensional triangle
+ * Three-dimensional triangle
  */
 class Triangle {
 	/**
@@ -223,9 +223,9 @@ class Triangle {
 
 	/**
 	 * Construct a triangle with vertext points A, B and C
-	 * @param {Point|null} pointA 
-	 * @param {Point|null} pointB 
-	 * @param {Point|null} pointC 
+	 * @param {Point|null} pointA
+	 * @param {Point|null} pointB
+	 * @param {Point|null} pointC
 	 */
 	constructor(pointA = null, pointB = null, pointC = null) {
 		this.pointA = pointA?.clone() ?? new Point();
@@ -235,7 +235,7 @@ class Triangle {
 
 	/**
 	 * Flip around YZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Triangle}
 	 */
 	flipX(centerOffset = 0) {
@@ -247,7 +247,7 @@ class Triangle {
 
 	/**
 	 * Flip around XZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Triangle}
 	 */
 	flipY(centerOffset = 0) {
@@ -259,7 +259,7 @@ class Triangle {
 
 	/**
 	 * Flip around XY plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Triangle}
 	 */
 	flipZ(centerOffset = 0) {
@@ -271,8 +271,8 @@ class Triangle {
 
 	/**
 	 * Rotate around the line
-	 * @param {Line} line 
-	 * @param {number} angle 
+	 * @param {Line} line
+	 * @param {number} angle
 	 * @returns {Triangle}
 	 */
 	rotate(line, angle) {
@@ -284,9 +284,9 @@ class Triangle {
 
 	/**
 	 * Rotate around X axis
-	 * @param {number} angle 
-	 * @param {number} y 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} y
+	 * @param {number} z
 	 * @returns {Triangle}
 	 */
 	rotateX(angle, y = 0, z = 0) {
@@ -298,9 +298,9 @@ class Triangle {
 
 	/**
 	 * Rotate around Y axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} z
 	 * @returns {Triangle}
 	 */
 	rotateY(angle, x = 0, z = 0) {
@@ -312,9 +312,9 @@ class Triangle {
 
 	/**
 	 * Rotate around Z axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} y 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} y
 	 * @returns {Triangle}
 	 */
 	rotateZ(angle, x = 0, y = 0) {
@@ -326,9 +326,9 @@ class Triangle {
 
 	/**
 	 * Move by X, Y and Z
-	 * @param {number} offsetX 
-	 * @param {number} offsetY 
-	 * @param {number} offsetZ 
+	 * @param {number} offsetX
+	 * @param {number} offsetY
+	 * @param {number} offsetZ
 	 * @returns {Triangle}
 	 */
 	move(offsetX = 0, offsetY = 0, offsetZ = 0) {
@@ -340,8 +340,8 @@ class Triangle {
 
 	/**
 	 * Scale uniformly around the point
-	 * @param {number} ratio 
-	 * @param {Point|null} centerPoint 
+	 * @param {number} ratio
+	 * @param {Point|null} centerPoint
 	 * @returns {Triangle}
 	 */
 	scale(ratio, centerPoint = null) {
@@ -354,10 +354,10 @@ class Triangle {
 
 	/**
 	 * Scale by X, Y and Z dimensions around a point
-	 * @param {number} ratioX 
-	 * @param {number} ratioY 
-	 * @param {number} ratioZ 
-	 * @param {Point|null} centerPoint 
+	 * @param {number} ratioX
+	 * @param {number} ratioY
+	 * @param {number} ratioZ
+	 * @param {Point|null} centerPoint
 	 * @returns {Triangle}
 	 */
 	scaleXYZ(ratioX = 1, ratioY = 1, ratioZ = 1, centerPoint = null) {
@@ -390,15 +390,15 @@ class Triangle {
 
 	/**
 	 * Create a triangle from raw coordinates
-	 * @param {number} x1 
-	 * @param {number} y1 
-	 * @param {number} z1 
-	 * @param {number} x2 
-	 * @param {number} y2 
-	 * @param {number} z2 
-	 * @param {number} x3 
-	 * @param {number} y3 
-	 * @param {number} z3 
+	 * @param {number} x1
+	 * @param {number} y1
+	 * @param {number} z1
+	 * @param {number} x2
+	 * @param {number} y2
+	 * @param {number} z2
+	 * @param {number} x3
+	 * @param {number} y3
+	 * @param {number} z3
 	 * @returns {Triangle}
 	 */
 	static createFromCoordinates(x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0, x3 = 0, y3 = 0, z3 = 0) {
@@ -407,7 +407,7 @@ class Triangle {
 }
 
 /**
- * Three dimensional line
+ * Three-dimensional line
  */
 class Line {
 	/**
@@ -424,8 +424,8 @@ class Line {
 
 	/**
 	 * Construct a point with points A and B
-	 * @param {Point|null} pointA 
-	 * @param {Point|null} pointB 
+	 * @param {Point|null} pointA
+	 * @param {Point|null} pointB
 	 */
 	constructor(pointA = null, pointB = null) {
 		this.pointA = pointA?.clone() ?? new Point();
@@ -434,7 +434,7 @@ class Line {
 
 	/**
 	 * Flip around YZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Line}
 	 */
 	flipX(centerOffset = 0) {
@@ -445,7 +445,7 @@ class Line {
 
 	/**
 	 * Flip around XZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Line}
 	 */
 	flipY(centerOffset = 0) {
@@ -456,7 +456,7 @@ class Line {
 
 	/**
 	 * Flip around XY plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {Line}
 	 */
 	flipZ(centerOffset = 0) {
@@ -467,8 +467,8 @@ class Line {
 
 	/**
 	 * Rotate around the line
-	 * @param {Line} line 
-	 * @param {number} angle 
+	 * @param {Line} line
+	 * @param {number} angle
 	 * @returns {Line}
 	 */
 	rotate(line, angle) {
@@ -479,9 +479,9 @@ class Line {
 
 	/**
 	 * Rotate around X axis
-	 * @param {number} angle 
-	 * @param {number} y 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} y
+	 * @param {number} z
 	 * @returns {Line}
 	 */
 	rotateX(angle, y = 0, z = 0) {
@@ -492,9 +492,9 @@ class Line {
 
 	/**
 	 * Rotate around Y axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} z
 	 * @returns {Line}
 	 */
 	rotateY(angle, x = 0, z = 0) {
@@ -505,9 +505,9 @@ class Line {
 
 	/**
 	 * Rotate around Z axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} y 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} y
 	 * @returns {Line}
 	 */
 	rotateZ(angle, x = 0, y = 0) {
@@ -518,9 +518,9 @@ class Line {
 
 	/**
 	 * Move by X, Y and Z
-	 * @param {number} offsetX 
-	 * @param {number} offsetY 
-	 * @param {number} offsetZ 
+	 * @param {number} offsetX
+	 * @param {number} offsetY
+	 * @param {number} offsetZ
 	 * @returns {Line}
 	 */
 	move(offsetX = 0, offsetY = 0, offsetZ = 0) {
@@ -531,8 +531,8 @@ class Line {
 
 	/**
 	 * Scale uniformly around the point
-	 * @param {number} ratio 
-	 * @param {Point|null} centerPoint 
+	 * @param {number} ratio
+	 * @param {Point|null} centerPoint
 	 * @returns {Line}
 	 */
 	scale(ratio, centerPoint = null) {
@@ -544,10 +544,10 @@ class Line {
 
 	/**
 	 * Scale by X, Y and Z dimensions around a point
-	 * @param {number} ratioX 
-	 * @param {number} ratioY 
-	 * @param {number} ratioZ 
-	 * @param {Point|null} centerPoint 
+	 * @param {number} ratioX
+	 * @param {number} ratioY
+	 * @param {number} ratioZ
+	 * @param {Point|null} centerPoint
 	 * @returns {Line}
 	 */
 	scaleXYZ(ratioX = 1, ratioY = 1, ratioZ = 1, centerPoint = null) {
@@ -579,12 +579,12 @@ class Line {
 
 	/**
 	 * Create a line from raw coordinates
-	 * @param {number} x1 
-	 * @param {number} y1 
-	 * @param {number} z1 
-	 * @param {number} x2 
-	 * @param {number} y2 
-	 * @param {number} z2 
+	 * @param {number} x1
+	 * @param {number} y1
+	 * @param {number} z1
+	 * @param {number} x2
+	 * @param {number} y2
+	 * @param {number} z2
 	 * @returns {Line}
 	 */
 	static createFromCoordinates(x1 = 0, y1 = 0, z1 = 0, x2 = 0, y2 = 0, z2 = 0) {
@@ -593,7 +593,7 @@ class Line {
 }
 
 /**
- * Three dimensional object
+ * Three-dimensional object
  */
 class ThreeDimensionalObject {
 	/**
@@ -603,8 +603,8 @@ class ThreeDimensionalObject {
 	#triangles = [];
 
 	/**
-	 * Construct a three dimensional object with optional triangles
-	 * @param {Triangle[]} triangles 
+	 * Construct a three-dimensional object with optional triangles
+	 * @param {Triangle[]} triangles
 	 */
 	constructor(triangles = []) {
 		this.setTriangles(triangles);
@@ -620,7 +620,7 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Replace the triangles
-	 * @param {Triangle[]} triangles 
+	 * @param {Triangle[]} triangles
 	 */
 	setTriangles(triangles) {
 		this.#triangles = triangles.map(triangle => triangle.clone());
@@ -628,7 +628,7 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Add a triangle
-	 * @param {Triangle} triangle 
+	 * @param {Triangle} triangle
 	 */
 	addTriangle(triangle) {
 		this.#triangles.push(triangle.clone());
@@ -667,7 +667,7 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Flip around YZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {ThreeDimensionalObject}
 	 */
 	flipX(centerOffset = 0) {
@@ -677,7 +677,7 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Flip around XZ plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {ThreeDimensionalObject}
 	 */
 	flipY(centerOffset = 0) {
@@ -687,7 +687,7 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Flip around XY plane with the given center distance
-	 * @param {number} centerOffset 
+	 * @param {number} centerOffset
 	 * @returns {ThreeDimensionalObject}
 	 */
 	flipZ(centerOffset = 0) {
@@ -697,8 +697,8 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Rotate around the line
-	 * @param {Line} line 
-	 * @param {number} angle 
+	 * @param {Line} line
+	 * @param {number} angle
 	 * @returns {ThreeDimensionalObject}
 	 */
 	rotate(line, angle) {
@@ -708,9 +708,9 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Rotate around X axis
-	 * @param {number} angle 
-	 * @param {number} y 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} y
+	 * @param {number} z
 	 * @returns {ThreeDimensionalObject}
 	 */
 	rotateX(angle, y = 0, z = 0) {
@@ -720,9 +720,9 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Rotate around Y axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} z 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} z
 	 * @returns {ThreeDimensionalObject}
 	 */
 	rotateY(angle, x = 0, z = 0) {
@@ -732,9 +732,9 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Rotate around Z axis
-	 * @param {number} angle 
-	 * @param {number} x 
-	 * @param {number} y 
+	 * @param {number} angle
+	 * @param {number} x
+	 * @param {number} y
 	 * @returns {ThreeDimensionalObject}
 	 */
 	rotateZ(angle, x = 0, y = 0) {
@@ -744,9 +744,9 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Move by X, Y and Z
-	 * @param {number} offsetX 
-	 * @param {number} offsetY 
-	 * @param {number} offsetZ 
+	 * @param {number} offsetX
+	 * @param {number} offsetY
+	 * @param {number} offsetZ
 	 * @returns {ThreeDimensionalObject}
 	 */
 	move(offsetX = 0, offsetY = 0, offsetZ = 0) {
@@ -756,8 +756,8 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Scale uniformly around the point
-	 * @param {number} ratio 
-	 * @param {Point|null} centerPoint 
+	 * @param {number} ratio
+	 * @param {Point|null} centerPoint
 	 * @returns {ThreeDimensionalObject}
 	 */
 	scale(ratio, centerPoint = null) {
@@ -768,10 +768,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Scale by X, Y and Z dimensions around a point
-	 * @param {number} ratioX 
-	 * @param {number} ratioY 
-	 * @param {number} ratioZ 
-	 * @param {Point|null} centerPoint 
+	 * @param {number} ratioX
+	 * @param {number} ratioY
+	 * @param {number} ratioZ
+	 * @param {Point|null} centerPoint
 	 * @returns {ThreeDimensionalObject}
 	 */
 	scaleXYZ(ratioX = 1, ratioY = 1, ratioZ = 1, centerPoint = null) {
@@ -781,8 +781,8 @@ class ThreeDimensionalObject {
 	}
 
 	/**
-	 * Merge with another three dimensional object
-	 * @param {ThreeDimensionalObject} object 
+	 * Merge with another three-dimensional object
+	 * @param {ThreeDimensionalObject} object
 	 * @returns {ThreeDimensionalObject}
 	 */
 	merge(object) {
@@ -795,13 +795,13 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Merge all vertexes points that have coordinates within the merge radius in order to reduce the vertex count
-	 * @param {number} mergeRadius 
+	 * @param {number} mergeRadius
 	 * @returns {ThreeDimensionalObject}
 	 */
 	optimize(mergeRadius = 0.1) {
 		/**
-		 * @param {Point} point 
-		 * @returns 
+		 * @param {Point} point
+		 * @returns
 		 */
 		function getKeyFromPoint(point) {
 			return `${Math.round(point.x / mergeRadius)},${Math.round(point.y / mergeRadius)},${Math.round(point.z / mergeRadius)}`;
@@ -839,7 +839,7 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Create a box with a diagonal
-	 * @param {Line} diagonal 
+	 * @param {Line} diagonal
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createBox(diagonal = new Line(new Point(0, 0, 0), new Point(1, 1, 1))) {
@@ -912,9 +912,9 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Create a sphere with a center point and radius
-	 * @param {Point} centerPoint 
-	 * @param {number} radius 
-	 * @param {number} step 
+	 * @param {Point} centerPoint
+	 * @param {number} radius
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createSphere(centerPoint = new Point(), radius = 1, step = 0.2) {
@@ -958,10 +958,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a XY base cylinder with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createCylinder(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -970,10 +970,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a XY base cylinder with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createCylinderWithXYBase(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -982,10 +982,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a XZ base cylinder with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createCylinderWithXZBase(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -994,10 +994,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a YZ base cylinder with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createCylinderWithYZBase(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -1006,10 +1006,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a XY base cone with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createCone(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -1018,10 +1018,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a XY base cone with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createConeWithXYBase(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -1030,10 +1030,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a XZ base cone with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createConeWithXZBase(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -1042,10 +1042,10 @@ class ThreeDimensionalObject {
 
 	/**
 	 * Creates a YZ base cone with base radius and height
-	 * @param {Point} baseCenter 
-	 * @param {number} baseRadius 
-	 * @param {number} height 
-	 * @param {number} step 
+	 * @param {Point} baseCenter
+	 * @param {number} baseRadius
+	 * @param {number} height
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static createConeWithYZBase(baseCenter = new Point(), baseRadius = 1, height = 1, step = 0.2) {
@@ -1053,10 +1053,10 @@ class ThreeDimensionalObject {
 	}
 
 	/**
-	 * @param {string} mode 
-	 * @param {number} r 
-	 * @param {number} h 
-	 * @param {number} step 
+	 * @param {string} mode
+	 * @param {number} r
+	 * @param {number} h
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static #getCylinder(mode, r, h, step) {
@@ -1086,10 +1086,10 @@ class ThreeDimensionalObject {
 	}
 
 	/**
-	 * @param {string} mode 
-	 * @param {number} r 
-	 * @param {number} h 
-	 * @param {number} step 
+	 * @param {string} mode
+	 * @param {number} r
+	 * @param {number} h
+	 * @param {number} step
 	 * @returns {ThreeDimensionalObject}
 	 */
 	static #getCone(mode, r, h, step) {
@@ -1116,14 +1116,14 @@ class ThreeDimensionalObject {
 
 	/**
 	 * @callback mapperResult
-	 * @param {number} x 
-	 * @param {number} y 
-	 * @param {number} z 
+	 * @param {number} x
+	 * @param {number} y
+	 * @param {number} z
 	 * @returns {Point}
 	 */
 
-	/** 
-	 * @param {string} mode 
+	/**
+	 * @param {string} mode
 	 * @returns {mapperResult}
 	 */
 	static #getPointMapper(mode) {
@@ -1157,9 +1157,9 @@ class Renderer {
 
 	/**
 	 * Construct a renderer with view point and viewport width and height
-	 * @param {number|null} width 
-	 * @param {number|null} height 
-	 * @param {Point|null} viewPoint 
+	 * @param {number|null} width
+	 * @param {number|null} height
+	 * @param {Point|null} viewPoint
 	 */
 	constructor(width = null, height = null, viewPoint = null) {
 		this.resize(width, height, viewPoint);
@@ -1167,9 +1167,9 @@ class Renderer {
 
 	/**
 	 * Move the view point
-	 * @param {number} offsetX 
-	 * @param {number} offsetY 
-	 * @param {number} offsetZ 
+	 * @param {number} offsetX
+	 * @param {number} offsetY
+	 * @param {number} offsetZ
 	 */
 	moveViewPoint(offsetX = 0, offsetY = 0, offsetZ = 0) {
 		this.#viewPoint.move(offsetX, offsetY, offsetZ);
@@ -1177,7 +1177,7 @@ class Renderer {
 
 	/**
 	 * Update the view point
-	 * @param {Point} viewPoint 
+	 * @param {Point} viewPoint
 	 */
 	setViewPoint(viewPoint) {
 		this.#viewPoint = viewPoint.clone();
@@ -1185,16 +1185,16 @@ class Renderer {
 
 	/**
 	 * Update the renderer
-	 * @param {number|null} width 
-	 * @param {number|null} height 
-	 * @param {Point|null} viewPoint 
+	 * @param {number|null} width
+	 * @param {number|null} height
+	 * @param {Point|null} viewPoint
 	 */
 	resize(width = null, height = null, viewPoint = null) {
 		height = height ?? this.height();
 		width = width ?? this.width();
 		viewPoint = viewPoint ?? (this.#viewPoint ?? new Point());
 
-		if (width !== this.width || height !== this.height) {
+		if (width !== this.width() || height !== this.height()) {
 			this.#zBuffer.length = height;
 
 			for (let y = this.#zBuffer.length - 1; y >= 0; --y) {
@@ -1232,8 +1232,8 @@ class Renderer {
 	}
 
 	/**
-	 * Renders the given thee dimensional object(s) in a string
-	 * @param {ThreeDimensionalObject[]|ThreeDimensionalObject} objects 
+	 * Renders the given three-dimensional object(s) in a string
+	 * @param {ThreeDimensionalObject[]|ThreeDimensionalObject} objects
 	 * @returns {string}
 	 */
 	render(objects) {
@@ -1301,9 +1301,9 @@ class Renderer {
 	}
 
 	/**
-	 * @param {Triangle} triangle 
-	 * @param {number} width 
-	 * @param {number} height 
+	 * @param {Triangle} triangle
+	 * @param {number} width
+	 * @param {number} height
 	 */
 	#renderTriangle(triangle, width, height) {
 		const sumOfSizes = width + height;
