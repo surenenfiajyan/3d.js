@@ -222,7 +222,7 @@ class Triangle {
 	pointC;
 
 	/**
-	 * Construct a triangle with vertext points A, B and C
+	 * Construct a triangle with vertex points A, B and C
 	 * @param {Point|null} pointA
 	 * @param {Point|null} pointB
 	 * @param {Point|null} pointC
