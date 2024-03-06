@@ -615,7 +615,7 @@ class ThreeDimensionalObject {
 	 * @returns {Triangle[]}
 	 */
 	getTriangles() {
-		return this.#triangles;
+		return this.#triangles.map(triangle => triangle.clone());
 	}
 
 	/**
