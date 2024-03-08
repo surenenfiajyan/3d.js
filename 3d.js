@@ -1289,7 +1289,7 @@ class Renderer {
 		let xToZ = (- x1 * y2 + y1 * x2) / (z1 * y2 - y1 * z2);
 
 		xToY = isNaN(xToY) ? 0 : xToY;
-	    xToZ = isNaN(xToZ) ? 0 : xToZ;
+		xToZ = isNaN(xToZ) ? 0 : xToZ;
 
 		const ratio = 1 / Math.sqrt(1 + xToY * xToY + xToZ * xToZ);
 		const coefficient = xToZ >= 0 ? (1 + ratio) / 2 : (1 - ratio) / 2;
