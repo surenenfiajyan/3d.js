@@ -1146,14 +1146,24 @@ class ThreeDimensionalObject {
 class Renderer {
 	/**
 	 * Z buffer
-	 * @type {(number|undefined)[][]}
+	 * @type {number[][]}
 	 */
 	#zBuffer = [[]];
+	/**
+	 * Gradient buffer
+	 * @type {string[][]}
+	 */
+	#gradientBuffer = [[]];
 	/**
 	 * View point
 	 * @type {Point}
 	 */
 	#viewPoint;
+	/**
+	 * Gradient
+	 * @type {string[]}
+	 */
+	#gradient = ['.', '"', '?', '%', '%', '#', '@'];
 
 	/**
 	 * Construct a renderer with view point and viewport width and height
@@ -1195,10 +1205,11 @@ class Renderer {
 		viewPoint = viewPoint ?? (this.#viewPoint ?? new Point());
 
 		if (width !== this.width() || height !== this.height()) {
-			this.#zBuffer.length = height;
+			this.#gradientBuffer.length = this.#zBuffer.length = height;
 
 			for (let y = this.#zBuffer.length - 1; y >= 0; --y) {
-				this.#zBuffer[y] = new Array(width);
+				this.#zBuffer[y] = Array(width).fill(Number.NEGATIVE_INFINITY);
+				this.#gradientBuffer[y] = Array(width).fill(' ');
 			}
 		}
 
@@ -1247,57 +1258,43 @@ class Renderer {
 		});
 
 		let s = '';
-		const gradient = ['.', '"', '?', '%', '%', '#', '@'];
 
-		for (let y = 0; y < this.#zBuffer.length - 2; ++y) {
-			for (let x = 0; x < this.#zBuffer[y].length - 2; ++x) {
-				if (this.#zBuffer[y][x] !== undefined) {
-					this.#zBuffer[y][x] = (
-						this.#zBuffer[y][x] +
-						(this.#zBuffer[y + 1][x] ?? this.#zBuffer[y][x]) +
-						(this.#zBuffer[y][x + 1] ?? this.#zBuffer[y][x]) +
-						(this.#zBuffer[y + 1][x + 1] ?? this.#zBuffer[y][x])
-					) / 4;
-				}
-			}
-		}
-
-		for (let y = 1; y < this.#zBuffer.length; ++y) {
-			for (let x = 1; x < this.#zBuffer[y].length; ++x) {
-				if (this.#zBuffer[y][x] !== undefined) {
-					this.#zBuffer[y][x] = (
-						this.#zBuffer[y][x] +
-						(this.#zBuffer[y - 1][x] ?? this.#zBuffer[y][x]) +
-						(this.#zBuffer[y][x - 1] ?? this.#zBuffer[y][x]) +
-						(this.#zBuffer[y - 1][x - 1] ?? this.#zBuffer[y][x])
-					) / 4;
-				}
-			}
-		}
-
-		for (let y = 0; y < this.#zBuffer.length - 1; ++y) {
-			for (let x = 0; x < this.#zBuffer[y].length - 1; ++x) {
-				if (this.#zBuffer[y][x] !== undefined) {
-					let angleCoefficient = 2 * this.#zBuffer[y][x] -
-						(this.#zBuffer[y][x + 1] ?? -Number.MAX_VALUE) -
-						(this.#zBuffer[y + 1][x] ?? -Number.MAX_VALUE);
-
-					angleCoefficient *= 6;
-					angleCoefficient = Math.min(angleCoefficient, gradient.length - 1);
-					angleCoefficient = Math.max(angleCoefficient, 0);
-					angleCoefficient = Math.round(angleCoefficient);
-					s += gradient[angleCoefficient];
-					s += gradient[angleCoefficient];
-					this.#zBuffer[y][x] = undefined;
-				} else {
-					s += '  ';
-				}
+		for (let y = 0; y < this.#gradientBuffer.length; ++y) {
+			for (const c of this.#gradientBuffer[y]) {
+				s += c.repeat(2);
 			}
 
+			this.#gradientBuffer[y].fill(' ');
+			this.#zBuffer[y].fill(Number.NEGATIVE_INFINITY);
 			s += '\n';
 		}
 
 		return s;
+	}
+
+	/**
+	 * @param {Triangle} triangle
+	 * @returns {string}
+	 */
+	#getGradient(triangle) {
+		const x1 = triangle.pointB.x - triangle.pointA.x;
+		const y1 = triangle.pointB.y - triangle.pointA.y;
+		const z1 = triangle.pointB.z - triangle.pointA.z;
+
+		const x2 = triangle.pointC.x - triangle.pointA.x;
+		const y2 = triangle.pointC.y - triangle.pointA.y;
+		const z2 = triangle.pointC.z - triangle.pointA.z;
+
+		let xToY = (- x1 * z2 + z1 * x2) / (y1 * z2 - z1 * y2);
+		let xToZ = (- x1 * y2 + y1 * x2) / (z1 * y2 - y1 * z2);
+
+		xToY = isNaN(xToY) ? 0 : xToY;
+	    xToZ = isNaN(xToZ) ? 0 : xToZ;
+
+		const ratio = 1 / Math.sqrt(1 + xToY * xToY + xToZ * xToZ);
+		const coefficient = xToZ >= 0 ? (1 + ratio) / 2 : (1 - ratio) / 2;
+		const index = Math.floor(coefficient * this.#gradient.length);
+		return this.#gradient[index] ?? this.#gradient[index - 1];
 	}
 
 	/**
@@ -1319,6 +1316,7 @@ class Renderer {
 			return;
 		}
 
+		const char = this.#getGradient(triangle);
 		const xLongInc = (c.x - a.x) / (c.y - a.y + 1);
 		const xShortInc1 = (b.x - a.x) / (b.y - a.y + 1);
 		const xShortInc2 = (c.x - b.x) / (c.y - b.y + 1);
@@ -1341,8 +1339,9 @@ class Renderer {
 
 			if (y >= 0 && y < height) {
 				for (let x = start; x <= end; ++x) {
-					if (z < this.#viewPoint.z && (!this.#zBuffer[y][x] || z > this.#zBuffer[y][x])) {
+					if (z < this.#viewPoint.z && z > this.#zBuffer[y][x]) {
 						this.#zBuffer[y][x] = z;
+						this.#gradientBuffer[y][x] = char;
 					}
 
 					z += incZ;
@@ -1366,8 +1365,9 @@ class Renderer {
 
 			if (y >= 0 && y < height) {
 				for (let x = start; x <= end; ++x) {
-					if (z < this.#viewPoint.z && (!this.#zBuffer[y][x] || z > this.#zBuffer[y][x])) {
+					if (z < this.#viewPoint.z && z > this.#zBuffer[y][x]) {
 						this.#zBuffer[y][x] = z;
+						this.#gradientBuffer[y][x] = char;
 					}
 
 					z += incZ;
