@@ -838,6 +838,14 @@ class ThreeDimensionalObject {
 	}
 
 	/**
+	 * Iterate on triangles
+	 * @returns {IterableIterator<Triangle>}
+	 */
+	*[Symbol.iterator]() {
+		yield* this.#triangles[Symbol.iterator]();
+	}
+
+	/**
 	 * Create a box with a diagonal
 	 * @param {Line} diagonal
 	 * @returns {ThreeDimensionalObject}
@@ -1252,9 +1260,9 @@ class Renderer {
 		const height = this.height();
 
 		(Array.isArray(objects) ? objects : [objects]).forEach(object => {
-			object.getTriangles().forEach(tringle => {
-				this.#renderTriangle(tringle, width, height);
-			});
+			for (const triangle of object) {
+				this.#renderTriangle(triangle, width, height);
+			}
 		});
 
 		let s = '';
